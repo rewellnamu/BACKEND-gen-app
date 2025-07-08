@@ -7,7 +7,7 @@ const UserSchema = new mongoose.Schema({
   online: { type: Boolean, default: false },
   avatar: { type: String, default: '' },
   lastSeen: { type: Date }
-
 }, { timestamps: true });
 
 module.exports = mongoose.model('User', UserSchema);
+// This schema defines a User model with fields for username, email, password, online status, avatar URL, and last seen timestamp.
