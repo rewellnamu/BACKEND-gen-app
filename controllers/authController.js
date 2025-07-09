@@ -27,8 +27,12 @@ exports.login = async (req, res) => {
 };
 
 exports.getUsers = async (req, res) => {
-  const users = await User.find({ _id: { $ne: req.user.id } }).select('username avatar');
-  res.json(users);
+  try {
+    const users = await User.find({}, 'username avatar _id lastSeen');
+    res.json(users);
+  } catch (err) {
+    res.status(500).json({ message: 'Error fetching users' });
+  }
 };
 
 exports.updateProfile = async (req, res) => {
